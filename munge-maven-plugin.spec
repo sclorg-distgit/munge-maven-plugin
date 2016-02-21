@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        2.10%{?dist}
+Release:        2.11%{?dist}
 Summary:        Munge Maven Plugin
 License:        CDDL
 URL:            http://github.com/sonatype/munge-maven-plugin
@@ -13,7 +13,7 @@ BuildArch:      noarch
 Source0:        https://github.com/sonatype/munge-maven-plugin/archive/munge-maven-plugin-1.0.tar.gz
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-sonatype-plugins-parent
+BuildRequires:  %{?scl_prefix}sonatype-plugins-parent
 
 %description
 Munge is a purposely-simple Java preprocessor. It only supports
@@ -46,13 +46,13 @@ This package provides %{summary}.
 %setup -q -n %{pkg_name}-%{pkg_name}-%{version}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -66,6 +66,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0-2.11
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.0-2.10
 - maven33 rebuild
 
