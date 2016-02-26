@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        2.11%{?dist}
+Release:        2.12%{?dist}
 Summary:        Munge Maven Plugin
 License:        CDDL
 URL:            http://github.com/sonatype/munge-maven-plugin
@@ -12,7 +12,7 @@ BuildArch:      noarch
 
 Source0:        https://github.com/sonatype/munge-maven-plugin/archive/munge-maven-plugin-1.0.tar.gz
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}sonatype-plugins-parent
 
 %description
@@ -66,6 +66,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.0-2.12
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0-2.11
 - maven33 rebuild #2
 
